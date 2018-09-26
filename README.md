@@ -1,5 +1,7 @@
 # README
 
+Based on [](https://github.com/ksaye/IoTDemonstrations/tree/master/IoTEdgeOpenCV)
+
 Docker Image: sabbour/dronecapture
 
 You’ll need to set an environment variable called `EdgeHubConnectionString` in the form of `"HostName=<host_name>;DeviceId=<device_id>;SharedAccessKey=<device_key>;ModuleId=<module_id>;GatewayHostName=<gateway>"` to be able to use it as a module.
