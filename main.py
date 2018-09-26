@@ -294,18 +294,15 @@ def main(connection_string):
 
                     #IoTMessageJSON['imageBase64'] = encoded_string
                     
+                    IoTMessageJSON['cameraURL'] = cameraURL
+                    IoTMessageJSON['imageSize'] = os.path.getsize("captures/"+filename)
+                    IoTMessageJSON['imageFileName'] = "captures/"+filename
+                    IoTMessageJSON['imageURL'] = str("http://" + myIP + ":" + str(WebServicePort) + "/" + filename)
                     IoTMessageJSON['GrayScale'] = imageToGrayScale
                     IoTMessageJSON['Normalized'] = imageNormalization
                     IoTMessageJSON['ManhattanImageChange'] = ManhattanImageChange 
-                    IoTMessageJSON[cameraName +'imageFileName'] = "captures/"+filename
-                    IoTMessageJSON['imageFileName'] = "captures/"+filename
-                    IoTMessageJSON[cameraName + 'imageURL'] = str("http://" + myIP + ":" + str(WebServicePort) + "/" + filename)
-                    IoTMessageJSON['imageURL'] = str("http://" + myIP + ":" + str(WebServicePort) + "/" + filename)
                     IoTMessageJSON['ModuleIPAddress'] = str(myIP)
                     IoTMessageJSON['ZeroImageChange'] = ZeroImageChange
-                    IoTMessageJSON[cameraName + '-imageSize'] = os.path.getsize("captures/"+filename)
-                    IoTMessageJSON['imageSize'] = os.path.getsize("captures/"+filename)
-                    IoTMessageJSON['cameraURL'] = cameraURL
                     IoTMessageJSON['dateTime'] = time.strftime('%Y-%m-%dT%H:%M:%S')
 
                     IoTMessage = IoTHubMessage(bytearray(json.dumps(IoTMessageJSON), 'utf8'))
